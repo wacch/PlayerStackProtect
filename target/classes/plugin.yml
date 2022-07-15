@@ -1,0 +1,14 @@
+name: "PlayerStackProtect"
+version: "1.0alpha"
+main: "com.github.towatti1009.playerstackprotect.Main"
+api-version: "1.18"
+
+commands:
+  stack:
+    aliases: st
+    description: スタック時にこのコマンドを使用することで、スタック前の座標にテレポートすることができます。
+    permission: playerstackprotect.stack
+　　PlayerStackProtect:
+    aliases: psp
+    description: PlayerStackProtectのADMIN用コマンドを使用できます。
+    permission: playerstackprotect.admin
