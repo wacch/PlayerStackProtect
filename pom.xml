@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.towatti1009</groupId>
   <artifactId>PlayerStackProtect</artifactId>
-  <version>1.0alpha</version>
+  <version>1.1alpha</version>
 
   <repositories>
     <repository>

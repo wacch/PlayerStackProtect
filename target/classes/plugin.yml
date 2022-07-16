@@ -1,5 +1,5 @@
 name: "PlayerStackProtect"
-version: "1.0alpha"
+version: "1.1alpha"
 main: "com.github.towatti1009.playerstackprotect.Main"
 api-version: "1.18"
 
