@@ -1,12 +1,26 @@
-# If not configured correctly, default values are used. Note that no warning will be displayed.
+# If not configured correctly, default values are used. Note that no warning will be displayed!
+# A new item will be added under this field when the config is updated.
+
+# ---------------------------
+
+# DO NOT CHANGE HERE!
+Config-version: 1
+
+# ---------------------------
+
+# The following configs can also be changed within the server.
 
 # Defines the use of plugins.
 # Default: true
-Enable: true
+enable: true
 
 # Defines the use of debug.
 # Default: false
-Enable: false
+debug: false
+
+# ----------------------------
+
+#The following configs can't be changed even within the server.
 
 # Defines the interval at which locations are recorded with a tick value.
 # Default: 600
@@ -24,10 +38,10 @@ TimeToTeleport: 10
 # Default: 3
 LocationSaveCount: 3
 
-# Distance threshold at which new location will be stored.
+# Defines distance threshold at which new location will be stored.
 # Default: 20
 DistanceThreshold: 20
 
 # Define only one world in which the location will be stored.
-# Default: "world"
-LocationStoredWorld: "world"
+# Default: world
+LocationStoredWorld: world

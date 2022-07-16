@@ -8,7 +8,6 @@ commands:
     aliases: st
     description: スタック時にこのコマンドを使用することで、スタック前の座標にテレポートすることができます。
     permission: playerstackprotect.stack
-　　PlayerStackProtect:
-    aliases: psp
+  psp:
     description: PlayerStackProtectのADMIN用コマンドを使用できます。
     permission: playerstackprotect.admin

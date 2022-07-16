@@ -14,6 +14,7 @@ public class Main extends JavaPlugin{
     	if(Config.configLoad()) {
     		Bukkit.getServer().getPluginManager().registerEvents(new EventListener(), this);
     		getCommand("stack").setExecutor(new Commands());
+    		getCommand("psp").setExecutor(new Commands());
     		//getCommand("PlayerStackProtect").setExecutor(new Commands());
     		//座標を記録する間隔をここで設定
     		new GetPlayerPosScheduler().runTaskTimer(Main.getPlugin(),Config.getIntegerConfig("TimeToFirstRecord"),Config.getIntegerConfig("SaveLocationsInterval"));
