@@ -10,14 +10,12 @@ public class GetPlayerPosScheduler extends BukkitRunnable{
 		boolean debug = Config.getBooleanConfig("debug");
 		for(Player allPlayers : Bukkit.getOnlinePlayers()) {
 			if(!TeleportSequence.getAddableState(allPlayers)) {
-				if(debug)allPlayers.sendMessage("DEBUG:座標記録を試みます");
-				if(allPlayers.getWorld().getName().equalsIgnoreCase(Config.getStringConfig("LocationStoredWorld")))
-					PlayerPosMap.tryAddEntries(allPlayers.getName(), allPlayers.getLocation(),allPlayers);
-				else
-					if(debug)allPlayers.sendMessage("DEBUG:指定ワールドにいません");
-					
+				if(debug)
+					allPlayers.sendMessage("DEBUG:座標記録を試みます");
+	       		PlayerPosMap.tryAddEntries(allPlayers.getName(), allPlayers.getLocation(),allPlayers);
 			}else{
-				if(debug)allPlayers.sendMessage("DEBUG:テレポートシークエンス中です");
+				if(debug)
+					allPlayers.sendMessage("DEBUG:テレポートシークエンス中です");
 			}
         }
 	}
