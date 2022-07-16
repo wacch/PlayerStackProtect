@@ -2,6 +2,7 @@ package com.github.towatti1009.playerstackprotect;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,16 +10,13 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Config extends JavaPlugin{
-	private static FileConfiguration config = null;
+	public static FileConfiguration config = null;
 	private static Map<String, Boolean> bnData = new HashMap<>();
 	private static Map<String, String> sgData = new HashMap<>();
 	private static Map<String, Integer> itData = new HashMap<>();
-	private static boolean underReload = true;
 	
 	public static boolean configLoad() {
-		final int configVersion = 1;
-		underReload = false;
-		String[][] bn = new String[][] {{"enable","true"},{"debug","false"}};
+		String[][] bn = new String[][] {{"Enable","true"},{"Debug","false"}};
 		String[][] sg = new String[][] {{"LocationStoredWorld","world"}};
 		String[][] it = new String[][] {{"SaveLocationsInterval","600"},{"TimeToFirstRecord","0"},{"TimeToTeleport","10"},{"LocationSaveCount","3"},{"DistanceThreshold","20"}};
 		Plugin plg = Main.getPlugin();
@@ -32,13 +30,8 @@ public class Config extends JavaPlugin{
     	}
     	config = plg.getConfig();
     	
-    	if(config.getInt("Config-version") < configVersion) {
-    		config.options().copyDefaults(true);
-    		config.set("Config-version", configVersion);
-    		plg.saveConfig();
-    	}
-    	
     	String regexp = "^(0$|[1-9]\\d*)";
+    	Pattern p = Pattern.compile(regexp);
     	try {
     		for(int i=0; i<bn.length; i++)
         		bnData.put(bn[i][0], config.getBoolean(bn[i][0],Boolean.valueOf(bn[i][1])));
@@ -50,42 +43,25 @@ public class Config extends JavaPlugin{
         			itData.put(it[i][0], config.getInt(it[i][0],Integer.valueOf(it[i][1])));
         		}else{
         			plg.getLogger().info(ChatColor.RED + "正規表現パターンに一致していないものがあります:"+it[i][1]);
-        			underReload = true;
         			return false;
         		}
         	}
     	} catch(Exception e) {
     		plg.getLogger().info(ChatColor.RED + "valueOf変換エラー" + e.toString());
-    		underReload = true;
     		return false;
     	}
-    	underReload = true;
     	return true;
     }
 	
-	public static boolean getBooleanConfig(String key) {
-		return bnData.get(key);
+	public static boolean getBooleanConfig(String s) {
+		return bnData.get(s);
 	}
 	
-	public static boolean setBooleanConfig(String key,String value) {
-		if(value.equalsIgnoreCase("true") || value.equalsIgnoreCase("false")) {
-			config.set(key,Boolean.valueOf(value));
-			Main.getPlugin().saveConfig();
-		} else {
-			return false;
-		}
-		return true;
-	}
-	
-	public static String getStringConfig(String key) {
-		return sgData.get(key);
+	public static String getStringConfig(String s) {
+		return sgData.get(s);
 	}
 
-	public static int getIntegerConfig(String key) {
-		return itData.get(key);
-	}
-	
-	public static boolean canConfigLoad() {
-		return underReload;
+	public static int getIntegerConfig(String s) {
+		return itData.get(s);
 	}
 }
