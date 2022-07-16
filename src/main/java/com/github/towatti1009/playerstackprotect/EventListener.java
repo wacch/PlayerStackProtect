@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class EventListener implements Listener{	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
-		if(Config.getBooleanConfig("Enable")) {
+		if(Config.getBooleanConfig("enable") && Config.canConfigLoad()) {
 			Player pl = e.getPlayer();
 			PlayerPosMap.initEntries(pl.getName(), pl.getLocation());
 		}
@@ -18,6 +18,6 @@ public class EventListener implements Listener{
 	
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent e) {
-		PlayerPosMap.deleteKey(e.getPlayer().getName());
+		PlayerPosMap.deleteKeys(e.getPlayer().getName());
 	}
 }
