@@ -18,7 +18,7 @@ public class Main extends JavaPlugin{
     		//getCommand("PlayerStackProtect").setExecutor(new Commands());
     		//座標を記録する間隔をここで設定
     		new GetPlayerPosScheduler().runTaskTimer(Main.getPlugin(),Config.getIntegerConfig("TimeToFirstRecord"),Config.getIntegerConfig("SaveLocationsInterval"));
-    		getLogger().info(ChatColor.GOLD + "PlayerStackProtect Launched! v1.1α");
+    		getLogger().info(ChatColor.GOLD + "PlayerStackProtect Launched! rc1");
     	} else {
     		getLogger().info(ChatColor.RED + "Launch failed, please check the format of config.");
     	}
